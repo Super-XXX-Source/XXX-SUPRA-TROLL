@@ -95,7 +95,7 @@ local function createRainbowButton(text, callback)
     local Light = Instance.new("UIStroke")
     Light.Parent = Button
     Light.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-    Light.Color = Color3.fromRGB(0, 0, 139)
+    Light.Color = Color3.fromRGB(0, 0, 0)
     Light.Thickness = 2
 
     spawn(function()
